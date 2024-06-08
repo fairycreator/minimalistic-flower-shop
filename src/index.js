@@ -1,6 +1,5 @@
-// src/index.js
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -8,11 +7,15 @@ import GlobalStyles from "./styles/GlobalStyles";
 import Navbar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
-import ProductDetailPage from "./pages/ProductDetailPage";
-import CartPage from "./pages/CartPage";
-import CheckoutPage from "./pages/CheckoutPage";
-import LoginPage from "./pages/LoginPage";
-import AdminDashboard from "./pages/AdminDashboard";
+// import ProductDetailPage from "./pages/ProductDetailPage";
+// import CartPage from "./pages/CartPage";
+// import CheckoutPage from "./pages/CheckoutPage";
+// import LoginPage from "./pages/LoginPage";
+// import RegisterPage from "./pages/RegisterPage";
+// import AdminDashboard from "./pages/AdminDashboard";
+
+const container = document.getElementById("root");
+const root = createRoot(container);
 
 const App = () => (
   <Provider store={store}>
@@ -20,16 +23,17 @@ const App = () => (
       <GlobalStyles />
       <Navbar />
       <Routes>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/shop" component={ShopPage} />
-        <Route path="/product/:id" component={ProductDetailPage} />
-        <Route path="/cart" component={CartPage} />
-        <Route path="/checkout" component={CheckoutPage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/admin" component={AdminDashboard} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/shop" element={<ShopPage />} />
+        {/* <Route path="/product/:id" element={<ProductDetailPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/admin" element={<AdminDashboard />} /> */}
       </Routes>
     </Router>
   </Provider>
 );
 
-ReactDOM.render(<App />, document.getElementById("root"));
+root.render(<App />);

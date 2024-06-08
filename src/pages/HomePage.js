@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const HomePage = () => (
   <HomeContainer>
     <HeroSection>
-      <HeroImage src="/images/copenhagen.jpg" alt="Copenhagen" />
+      <HeroImage src="/public/images/copenahgen.png" alt="Copenhagen" />
       <HeroText>
         <h1>Welcome to Our Flower Shop</h1>
         <Link to="/shop">
