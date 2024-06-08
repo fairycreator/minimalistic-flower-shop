@@ -1,7 +1,7 @@
 // src/index.js
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import GlobalStyles from "./styles/GlobalStyles";
@@ -19,7 +19,7 @@ const App = () => (
     <Router>
       <GlobalStyles />
       <Navbar />
-      <Switch>
+      <Routes>
         <Route exact path="/" component={HomePage} />
         <Route path="/shop" component={ShopPage} />
         <Route path="/product/:id" component={ProductDetailPage} />
@@ -27,7 +27,7 @@ const App = () => (
         <Route path="/checkout" component={CheckoutPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/admin" component={AdminDashboard} />
-      </Switch>
+      </Routes>
     </Router>
   </Provider>
 );
