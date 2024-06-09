@@ -13,7 +13,7 @@ const HeroSection = () => (
 
 const HeroContainer = styled.section`
   height: 100vh;
-  background: url("/public/images/copenahgen.png") no-repeat center center/cover;
+  background: url("/images/copenahgen.png") no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
