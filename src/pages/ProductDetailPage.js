@@ -7,23 +7,24 @@ import styled from "styled-components";
 const ProductDetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.productDetails);
+  const productDetails = useSelector((state) => state.products.productDetails);
+  const loading = useSelector((state) => state.products.loading);
+  const error = useSelector((state) => state.products.error);
 
   useEffect(() => {
     dispatch(fetchProductDetails(id));
   }, [dispatch, id]);
 
-  if (!product) {
-    return <div>Loading...</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <ProductContainer>
-      <ProductImage src={product.image} alt={product.name} />
+      <ProductImage src={productDetails.image} alt={productDetails.name} />
       <ProductDetails>
-        <h2>{product.name}</h2>
-        <p>{product.description}</p>
-        <h3>${product.price}</h3>
+        <h2>{productDetails.name}</h2>
+        <p>{productDetails.description}</p>
+        <h3>${productDetails.price}</h3>
         <button>Add to Cart</button>
       </ProductDetails>
     </ProductContainer>
