@@ -1,22 +1,31 @@
-import axios from "axios";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
-export const login = (email, password) => async (dispatch) => {
+export const registerUser = (email, password) => async (dispatch) => {
   try {
-    const response = await axios.post("/api/auth/login", { email, password });
-    dispatch({ type: "LOGIN_SUCCESS", payload: response.data });
+    const auth = getAuth();
+    await createUserWithEmailAndPassword(auth, email, password);
+    dispatch({ type: "REGISTER_SUCCESS" });
   } catch (error) {
-    dispatch({ type: "LOGIN_FAILURE", payload: error.response.data });
+    dispatch({ type: "REGISTER_FAILURE", payload: error.message });
   }
 };
 
-export const register = (email, password) => async (dispatch) => {
+export const loginUser = (email, password) => async (dispatch) => {
   try {
-    const response = await axios.post("/api/auth/register", {
-      email,
-      password,
-    });
-    dispatch({ type: "REGISTER_SUCCESS", payload: response.data });
+    const auth = getAuth();
+    await signInWithEmailAndPassword(auth, email, password);
+    dispatch({ type: "LOGIN_SUCCESS" });
   } catch (error) {
-    dispatch({ type: "REGISTER_FAILURE", payload: error.response.data });
+    dispatch({ type: "LOGIN_FAILURE", payload: error.message });
   }
+};
+
+export const logoutUser = () => (dispatch) => {
+  const auth = getAuth();
+  auth.signOut();
+  dispatch({ type: "LOGOUT" });
 };
