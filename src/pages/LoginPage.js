@@ -1,34 +1,35 @@
-// src/pages/LoginPage.js
-import React, { useState } from "react";
-import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { login } from "../redux/actions/authActions"; // Assuming you have auth actions set up
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../redux/actions/authActions';
+import styled from 'styled-components';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const { error } = useSelector((state) => state.auth);
 
-  const handleLogin = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(email, password)); // Assuming login action is defined
+    dispatch(loginUser(email, password));
   };
 
   return (
     <LoginContainer>
-      <LoginForm onSubmit={handleLogin}>
+      <LoginForm onSubmit={handleSubmit}>
         <h2>Login</h2>
-        <Input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+        {error && <Error>{error}</Error>}
+        <Input 
+          type="email" 
+          placeholder="Email" 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)} 
         />
-        <Input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+        <Input 
+          type="password" 
+          placeholder="Password" 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)} 
         />
         <Button type="submit">Login</Button>
       </LoginForm>
@@ -41,37 +42,20 @@ const LoginContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #f7f7f7;
 `;
 
 const LoginForm = styled.form`
   background: white;
   padding: 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  text-align: center;
+padding: 2rem;
+border-radius: 4px;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 `;
 
-const Input = styled.input`
-  display: block;
-  width: 100%;
-  padding: 0.75rem;
-  margin: 0.5rem 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-`;
+const Input = styled.inputwidth: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px;;
 
-const Button = styled.button`
-  padding: 0.75rem 1.5rem;
-  background: #333;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+const Button = styled.buttonwidth: 100%; padding: 0.75rem; background: #333; color: white; border: none; border-radius: 4px; cursor: pointer; &:hover { background: #555; };
 
-  &:hover {
-    background: #555;
-  }
-`;
+const Error = styled.pcolor: red; margin-bottom: 1rem;;
 
 export default LoginPage;
