@@ -7,12 +7,13 @@ import GlobalStyles from "./styles/GlobalStyles";
 import Navbar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
-// import ProductDetailPage from "./pages/ProductDetailPage";
-// import CartPage from "./pages/CartPage";
-// import CheckoutPage from "./pages/CheckoutPage";
-// import LoginPage from "./pages/LoginPage";
-// import RegisterPage from "./pages/RegisterPage";
-// import AdminDashboard from "./pages/AdminDashboard";
+import ProductDetailPage from "./pages/ProductDetailPage";
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import AdminDashboard from "./pages/AdminDashboard";
+import PrivateRoute from "./components/PrivateRoute";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -25,12 +26,12 @@ const App = () => (
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />
-        {/* <Route path="/product/:id" element={<ProductDetailPage />} />
+        <Route path="/product/:id" element={<ProductDetailPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/admin" element={<AdminDashboard />} /> */}
+        <PrivateRoute path="/admin" component={AdminDashboard} />
       </Routes>
     </Router>
   </Provider>
