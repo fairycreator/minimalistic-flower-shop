@@ -13,28 +13,28 @@ const Navbar = () => {
   };
 
   return (
-    <NavContainer>
+    <Nav>
       <NavLogo to="/">Flower Shop</NavLogo>
-      <NavLinks>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/shop">Shop</NavLink>
+      <NavMenu>
+        <NavItem to="/">Home</NavItem>
+        <NavItem to="/shop">Shop</NavItem>
         {user ? (
           <>
-            <NavLink to="/cart">Cart</NavLink>
+            <NavItem to="/admin">Admin</NavItem>
             <NavButton onClick={handleLogout}>Logout</NavButton>
           </>
         ) : (
           <>
-            <NavLink to="/login">Login</NavLink>
-            <NavLink to="/register">Register</NavLink>
+            <NavItem to="/login">Login</NavItem>
+            <NavItem to="/register">Register</NavItem>
           </>
         )}
-      </NavLinks>
-    </NavContainer>
+      </NavMenu>
+    </Nav>
   );
 };
 
-const NavContainer = styled.nav`
+const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,18 +45,17 @@ const NavContainer = styled.nav`
 
 const NavLogo = styled(Link)`
   font-size: 1.5rem;
-  font-weight: bold;
   color: white;
   text-decoration: none;
 `;
 
-const NavLinks = styled.div`
+const NavMenu = styled.div`
   display: flex;
   align-items: center;
 `;
 
-const NavLink = styled(Link)`
-  margin-left: 1rem;
+const NavItem = styled(Link)`
+  margin-left: 2rem;
   color: white;
   text-decoration: none;
   &:hover {
@@ -65,12 +64,12 @@ const NavLink = styled(Link)`
 `;
 
 const NavButton = styled.button`
-  margin-left: 1rem;
+  margin-left: 2rem;
+  padding: 0.5rem 1rem;
   background: #555;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 0.5rem 1rem;
   cursor: pointer;
   &:hover {
     background: #777;
