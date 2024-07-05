@@ -1,136 +1,165 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const CheckoutPage = () => {
+  const items = useSelector((state) => state.cart.items);
   const [shippingInfo, setShippingInfo] = useState({
-    name: "",
     address: "",
     city: "",
-    zip: "",
+    postalCode: "",
+    country: "",
   });
-
   const [paymentInfo, setPaymentInfo] = useState({
     cardNumber: "",
     expiryDate: "",
     cvv: "",
   });
 
-  const handleShippingChange = (e) => {
-    const { name, value } = e.target;
-    setShippingInfo({ ...shippingInfo, [name]: value });
-  };
-
-  const handlePaymentChange = (e) => {
-    const { name, value } = e.target;
-    setPaymentInfo({ ...paymentInfo, [name]: value });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
+    // Process order here
   };
+
+  const totalAmount = items.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   return (
     <CheckoutContainer>
       <CheckoutForm onSubmit={handleSubmit}>
-        <h2>Checkout</h2>
-        <h3>Shipping Information</h3>
+        <h2>Shipping Information</h2>
         <Input
           type="text"
-          name="name"
-          placeholder="Name"
-          value={shippingInfo.name}
-          onChange={handleShippingChange}
-        />
-        <Input
-          type="text"
-          name="address"
           placeholder="Address"
           value={shippingInfo.address}
-          onChange={handleShippingChange}
+          onChange={(e) =>
+            setShippingInfo({ ...shippingInfo, address: e.target.value })
+          }
         />
         <Input
           type="text"
-          name="city"
           placeholder="City"
           value={shippingInfo.city}
-          onChange={handleShippingChange}
+          onChange={(e) =>
+            setShippingInfo({ ...shippingInfo, city: e.target.value })
+          }
         />
         <Input
           type="text"
-          name="zip"
-          placeholder="ZIP Code"
-          value={shippingInfo.zip}
-          onChange={handleShippingChange}
+          placeholder="Postal Code"
+          value={shippingInfo.postalCode}
+          onChange={(e) =>
+            setShippingInfo({ ...shippingInfo, postalCode: e.target.value })
+          }
         />
-        <h3>Payment Information</h3>
         <Input
           type="text"
-          name="cardNumber"
+          placeholder="Country"
+          value={shippingInfo.country}
+          onChange={(e) =>
+            setShippingInfo({ ...shippingInfo, country: e.target.value })
+          }
+        />
+        <h2>Payment Information</h2>
+        <Input
+          type="text"
           placeholder="Card Number"
           value={paymentInfo.cardNumber}
-          onChange={handlePaymentChange}
+          onChange={(e) =>
+            setPaymentInfo({ ...paymentInfo, cardNumber: e.target.value })
+          }
         />
         <Input
           type="text"
-          name="expiryDate"
-          placeholder="Expiry Date"
+          placeholder="Expiry Date (MM/YY)"
           value={paymentInfo.expiryDate}
-          onChange={handlePaymentChange}
+          onChange={(e) =>
+            setPaymentInfo({ ...paymentInfo, expiryDate: e.target.value })
+          }
         />
         <Input
           type="text"
-          name="cvv"
           placeholder="CVV"
           value={paymentInfo.cvv}
-          onChange={handlePaymentChange}
+          onChange={(e) =>
+            setPaymentInfo({ ...paymentInfo, cvv: e.target.value })
+          }
         />
         <Button type="submit">Place Order</Button>
       </CheckoutForm>
+      <OrderSummary>
+        <h2>Order Summary</h2>
+        {items.map((item) => (
+          <OrderItem key={item.id}>
+            <p>{item.name}</p>
+            <p>
+              ${item.price} x {item.quantity}
+            </p>
+          </OrderItem>
+        ))}
+        <TotalAmount>Total: ${totalAmount.toFixed(2)}</TotalAmount>
+      </OrderSummary>
     </CheckoutContainer>
   );
 };
 
 const CheckoutContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
   padding: 2rem;
 `;
 
 const CheckoutForm = styled.form`
-  background: white;
+  flex: 1;
   padding: 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  text-align: center;
-  width: 100%;
-  max-width: 500px;
-  h3 {
-    margin: 1rem 0;
-  }
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+`;
+
+const OrderSummary = styled.div`
+  flex: 1;
+  padding: 2rem;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 2rem;
 `;
 
 const Input = styled.input`
-  display: block;
   width: 100%;
   padding: 0.75rem;
-  margin: 0.5rem 0;
-  border: 1px solid #ddd;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
   border-radius: 4px;
 `;
 
 const Button = styled.button`
-  padding: 0.75rem 1.5rem;
+  width: 100%;
+  padding: 0.75rem;
   background: #333;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-
   &:hover {
     background: #555;
   }
+`;
+
+const OrderItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+`;
+
+const TotalAmount = styled.div`
+  font-weight: bold;
+  padding: 1rem;
+  text-align: right;
 `;
 
 export default CheckoutPage;
