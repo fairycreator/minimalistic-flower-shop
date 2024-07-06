@@ -1,47 +1,57 @@
 import React from "react";
 import styled from "styled-components";
 
-const HeroSection = () => (
-  <HeroContainer>
-    <HeroContent>
-      <h1>Welcome to Our Flower Shop</h1>
-      <p>Discover the beauty of our fresh flowers</p>
-      <HeroButton>Shop Now</HeroButton>
-    </HeroContent>
-  </HeroContainer>
-);
+const HeroSection = () => {
+  return (
+    <HeroContainer>
+      <HeroContent>
+        <HeroTitle>Welcome to Copenhagen Flower Shop</HeroTitle>
+        <HeroSubtitle>Beautiful Flowers for Every Occasion</HeroSubtitle>
+        <HeroButton>Shop Now</HeroButton>
+      </HeroContent>
+    </HeroContainer>
+  );
+};
 
-const HeroContainer = styled.section`
+const HeroContainer = styled.div`
+  background: url("https://source.unsplash.com/1600x900/?flowers") no-repeat
+    center center/cover;
   height: 100vh;
-  background: url("/images/copenahgen.png") no-repeat center center/cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 `;
 
 const HeroContent = styled.div`
   text-align: center;
-  color: white;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 2rem;
+  backdrop-filter: blur(5px);
+  padding: 20px;
   border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+`;
 
-  h1 {
-    font-size: 3rem;
-  }
+const HeroTitle = styled.h1`
+  font-size: 4rem;
+  margin-bottom: 1rem;
+`;
 
-  p {
-    margin: 1rem 0;
-  }
+const HeroSubtitle = styled.h2`
+  font-size: 2rem;
+  margin-bottom: 2rem;
 `;
 
 const HeroButton = styled.button`
-  padding: 0.5rem 1rem;
-  background: #ff5a5f;
+  background-color: #ff4081;
   color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
   border: none;
   border-radius: 5px;
-  font-size: 1rem;
+  cursor: pointer;
+  &:hover {
+    background-color: #ff1c66;
+  }
 `;
 
 export default HeroSection;
