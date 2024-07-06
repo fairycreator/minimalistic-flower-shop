@@ -1,51 +1,58 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../redux/actions/productActions";
-import ProductCard from "./ProductCard";
+import React from "react";
 import styled from "styled-components";
+import ProductCard from "./ProductCard";
 
 const FeaturedProducts = () => {
-  const dispatch = useDispatch();
-  const { products, loading, error } = useSelector((state) => state.products);
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
+  // Example products array
+  const products = [
+    {
+      id: 1,
+      name: "Rose Bouquet",
+      price: 29.99,
+      imageUrl: "https://source.unsplash.com/400x300/?rose",
+    },
+    {
+      id: 2,
+      name: "Tulip Bundle",
+      price: 24.99,
+      imageUrl: "https://source.unsplash.com/400x300/?tulip",
+    },
+    {
+      id: 3,
+      name: "Sunflower Arrangement",
+      price: 19.99,
+      imageUrl: "https://source.unsplash.com/400x300/?sunflower",
+    },
+  ];
 
   return (
-    <FeaturedContainer>
-      <h2>Featured Products</h2>
-      <ProductGrid>
-        {products.slice(0, 4).map((product) => (
+    <SectionContainer>
+      <SectionTitle>Featured Products</SectionTitle>
+      <ProductsContainer>
+        {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
-      </ProductGrid>
-    </FeaturedContainer>
+      </ProductsContainer>
+    </SectionContainer>
   );
 };
 
-const FeaturedContainer = styled.section`
-  padding: 2rem;
-  background: #fff;
-  text-align: center;
-
-  h2 {
-    margin-bottom: 1rem;
-  }
+const SectionContainer = styled.section`
+  padding: 4rem 2rem;
+  background-color: #f8f8f8;
 `;
 
-const ProductGrid = styled.div`
+const SectionTitle = styled.h2`
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+`;
+
+const ProductsContainer = styled.div`
   display: flex;
+  justify-content: center;
+  gap: 2rem;
   flex-wrap: wrap;
-  justify-content: space-around;
 `;
 
 export default FeaturedProducts;
