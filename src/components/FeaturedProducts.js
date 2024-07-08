@@ -1,58 +1,60 @@
 import React from "react";
 import styled from "styled-components";
-import ProductCard from "./ProductCard";
 
-const FeaturedProducts = () => {
-  // Example products array
-  const products = [
-    {
-      id: 1,
-      name: "Rose Bouquet",
-      price: 29.99,
-      imageUrl: "https://source.unsplash.com/400x300/?rose",
-    },
-    {
-      id: 2,
-      name: "Tulip Bundle",
-      price: 24.99,
-      imageUrl: "https://source.unsplash.com/400x300/?tulip",
-    },
-    {
-      id: 3,
-      name: "Sunflower Arrangement",
-      price: 19.99,
-      imageUrl: "https://source.unsplash.com/400x300/?sunflower",
-    },
-  ];
-
+const FeaturesSection = () => {
   return (
-    <SectionContainer>
-      <SectionTitle>Featured Products</SectionTitle>
-      <ProductsContainer>
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </ProductsContainer>
-    </SectionContainer>
+    <FeaturesContainer>
+      <Feature>
+        <FeatureIcon src="/images/feature-icon1.png" alt="Freshness" />
+        <h3>Always Fresh</h3>
+        <p>
+          Our flowers are sourced directly from farms to ensure the freshest
+          blooms.
+        </p>
+      </Feature>
+      <Feature>
+        <FeatureIcon src="/images/feature-icon2.png" alt="Delivery" />
+        <h3>Fast Delivery</h3>
+        <p>Enjoy fast and reliable delivery to your doorstep.</p>
+      </Feature>
+      <Feature>
+        <FeatureIcon src="/images/feature-icon3.png" alt="Support" />
+        <h3>24/7 Support</h3>
+        <p>
+          Our customer support is available around the clock for any queries.
+        </p>
+      </Feature>
+    </FeaturesContainer>
   );
 };
 
-const SectionContainer = styled.section`
-  padding: 4rem 2rem;
-  background-color: #f8f8f8;
-`;
-
-const SectionTitle = styled.h2`
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-`;
-
-const ProductsContainer = styled.div`
+const FeaturesContainer = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 4rem 2rem;
+  background-color: #fff;
 `;
 
-export default FeaturedProducts;
+const Feature = styled.div`
+  text-align: center;
+  max-width: 300px;
+
+  h3 {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+  }
+
+  p {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #777;
+  }
+`;
+
+const FeatureIcon = styled.img`
+  width: 80px;
+  height: 80px;
+`;
+
+export default FeaturesSection;
