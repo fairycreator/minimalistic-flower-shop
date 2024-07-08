@@ -1,72 +1,74 @@
+// src/components/TestimonialsSection.js
 import React from "react";
 import styled from "styled-components";
 
 const TestimonialsSection = () => {
   const testimonials = [
-    { id: 1, name: "John Doe", text: "Beautiful flowers and great service!" },
     {
-      id: 2,
-      name: "Jane Smith",
-      text: "The bouquet was stunning and delivery was prompt.",
+      name: "Jane Doe",
+      text: "The flowers were absolutely beautiful and arrived on time!",
     },
     {
-      id: 3,
-      name: "Mary Johnson",
-      text: "Wonderful experience, highly recommend.",
+      name: "John Smith",
+      text: "Excellent service and stunning arrangements. Highly recommend!",
+    },
+    {
+      name: "Emily Johnson",
+      text: "I loved the freshness and quality of the flowers. Great experience!",
     },
   ];
 
   return (
-    <SectionContainer>
-      <SectionTitle>Testimonials</SectionTitle>
-      <TestimonialsContainer>
-        {testimonials.map((testimonial) => (
-          <TestimonialCard key={testimonial.id}>
-            <TestimonialText>"{testimonial.text}"</TestimonialText>
-            <TestimonialAuthor>- {testimonial.name}</TestimonialAuthor>
-          </TestimonialCard>
+    <TestimonialsContainer>
+      <h2>What Our Customers Say</h2>
+      <Testimonials>
+        {testimonials.map((testimonial, index) => (
+          <Testimonial key={index}>
+            <p>"{testimonial.text}"</p>
+            <h4>- {testimonial.name}</h4>
+          </Testimonial>
         ))}
-      </TestimonialsContainer>
-    </SectionContainer>
+      </Testimonials>
+    </TestimonialsContainer>
   );
 };
 
-const SectionContainer = styled.section`
-  padding: 4rem 2rem;
-  background-color: #f8f8f8;
-`;
-
-const SectionTitle = styled.h2`
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-`;
-
 const TestimonialsContainer = styled.div`
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #f9f9f9;
+
+  h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+`;
+
+const Testimonials = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-around;
   flex-wrap: wrap;
 `;
 
-const TestimonialCard = styled.div`
-  width: 300px;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 5px;
+const Testimonial = styled.div`
+  max-width: 300px;
+  margin: 1rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-`;
 
-const TestimonialText = styled.p`
-  font-size: 1rem;
-  margin-bottom: 1rem;
-`;
+  p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1rem;
+  }
 
-const TestimonialAuthor = styled.p`
-  font-size: 0.875rem;
-  font-style: italic;
-  color: #555;
+  h4 {
+    font-size: 1rem;
+    color: #333;
+  }
 `;
 
 export default TestimonialsSection;
