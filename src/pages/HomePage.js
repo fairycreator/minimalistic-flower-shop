@@ -21,7 +21,11 @@ const HomePage = () => {
 };
 
 const HomePageContainer = styled.div`
-  font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
 `;
 
 export default HomePage;

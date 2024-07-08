@@ -31,14 +31,9 @@ const App = () => (
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route
-          path="/admin"
-          element={
-            <PrivateRoute>
-              <AdminDashboard />
-            </PrivateRoute>
-          }
-        />
+        <Route element={<PrivateRoute />}>
+          <Route path="/admin" element={<AdminDashboard />} />
+        </Route>
       </Routes>
     </Router>
   </Provider>
