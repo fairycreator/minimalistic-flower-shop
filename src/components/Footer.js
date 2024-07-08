@@ -5,47 +5,35 @@ const Footer = () => {
   return (
     <FooterContainer>
       <FooterContent>
-        <FooterSection>
+        <FooterColumn>
           <h4>About Us</h4>
           <p>
-            We are a boutique flower shop in Copenhagen, offering the freshest
-            flowers for every occasion.
+            We are committed to providing the freshest and most beautiful
+            flowers delivered directly to your door.
           </p>
-        </FooterSection>
-        <FooterSection>
+        </FooterColumn>
+        <FooterColumn>
           <h4>Contact Us</h4>
-          <p>Email: info@copenhagenflowershop.com</p>
-          <p>Phone: +45 123 456 789</p>
-        </FooterSection>
-        <FooterSection>
+          <p>Email: support@flowershop.com</p>
+          <p>Phone: (123) 456-7890</p>
+        </FooterColumn>
+        <FooterColumn>
           <h4>Follow Us</h4>
-          <SocialLinks>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Facebook
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Instagram
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Twitter
-            </a>
-          </SocialLinks>
-        </FooterSection>
+          <FooterSocials>
+            <SocialLink href="https://facebook.com">
+              <i className="fab fa-facebook-f"></i>
+            </SocialLink>
+            <SocialLink href="https://twitter.com">
+              <i className="fab fa-twitter"></i>
+            </SocialLink>
+            <SocialLink href="https://instagram.com">
+              <i className="fab fa-instagram"></i>
+            </SocialLink>
+          </FooterSocials>
+        </FooterColumn>
       </FooterContent>
       <FooterBottom>
-        <p>&copy; 2024 Copenhagen Flower Shop. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Flower Shop. All rights reserved.</p>
       </FooterBottom>
     </FooterContainer>
   );
@@ -53,52 +41,56 @@ const Footer = () => {
 
 const FooterContainer = styled.footer`
   background-color: #333;
-  color: white;
-  padding: 2rem 1rem;
+  color: #fff;
+  padding: 2rem;
 `;
 
 const FooterContent = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  gap: 2rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #444;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
-const FooterSection = styled.div`
-  max-width: 300px;
+const FooterColumn = styled.div`
+  flex: 1;
+  min-width: 250px;
+  margin: 1rem;
 
   h4 {
+    font-size: 1.2rem;
     margin-bottom: 1rem;
   }
 
   p {
-    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #ccc;
   }
 `;
 
-const SocialLinks = styled.div`
+const FooterSocials = styled.div`
   display: flex;
-  flex-direction: column;
+  gap: 1rem;
+`;
 
-  a {
-    color: white;
-    text-decoration: none;
-    margin: 0.5rem 0;
-    transition: color 0.3s ease;
+const SocialLink = styled.a`
+  color: #fff;
+  font-size: 1.5rem;
 
-    &:hover {
-      color: #ff4081;
-    }
+  &:hover {
+    color: #aaa;
   }
 `;
 
 const FooterBottom = styled.div`
   text-align: center;
-  padding: 1rem;
-  font-size: 0.875rem;
-  color: #aaa;
+  margin-top: 2rem;
+
+  p {
+    font-size: 1rem;
+    color: #ccc;
+  }
 `;
 
 export default Footer;
