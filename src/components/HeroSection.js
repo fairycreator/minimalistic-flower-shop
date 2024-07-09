@@ -1,59 +1,30 @@
 import React from "react";
 import styled from "styled-components";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const HeroSection = () => {
   return (
     <HeroContainer>
-      <HeroText>
-        <h1>Discover the Beauty of Flowers</h1>
-        <p>Fresh blooms delivered to your door</p>
-        <HeroButton>Shop Now</HeroButton>
-      </HeroText>
-      <HeroImage src="/images/copenhagen.png" alt="Flowers" />
+      <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
+        <HeroImage src="/images/copenhagen1.png" alt="Beautiful Flowers" />
+        <HeroImage src="/images/copenhagen2.png" alt="Fresh Bouquets" />
+        <HeroImage src="/images/copenhagen3.png" alt="Flower Arrangements" />
+      </Carousel>
     </HeroContainer>
   );
 };
 
 const HeroContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem;
-  background-color: #f5f5f5;
-`;
-
-const HeroText = styled.div`
-  max-width: 600px;
-
-  h1 {
-    font-size: 3rem;
-    color: #333;
-  }
-
-  p {
-    font-size: 1.5rem;
-    color: #777;
-    margin: 1rem 0;
-  }
-`;
-
-const HeroButton = styled.button`
-  padding: 1rem 2rem;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-
-  &:hover {
-    background-color: #555;
-  }
+  width: 100%;
+  max-height: 60vh;
+  overflow: hidden;
 `;
 
 const HeroImage = styled.img`
-  max-width: 500px;
-  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 `;
 
 export default HeroSection;
