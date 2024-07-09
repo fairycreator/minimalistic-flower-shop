@@ -5,6 +5,9 @@ import FeaturedProducts from "../components/FeaturedProducts";
 import CategoriesSection from "../components/CategoriesSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import NewsletterSection from "../components/NewsletterSection";
+import BlogHighlights from "../components/BlogHighlights";
+import SocialMediaFeed from "../components/SocialMediaFeed";
+import TrustBadges from "../components/TrustBadges";
 import Footer from "../components/Footer";
 
 const HomePage = () => {
@@ -15,6 +18,9 @@ const HomePage = () => {
       <CategoriesSection />
       <TestimonialsSection />
       <NewsletterSection />
+      <BlogHighlights />
+      <SocialMediaFeed />
+      <TrustBadges />
       <Footer />
     </HomePageContainer>
   );
