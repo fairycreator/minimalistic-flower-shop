@@ -24,6 +24,7 @@ const BlogHighlights = () => {
 const BlogContainer = styled.div`
   width: 80%;
   margin: 2rem auto;
+
   text-align: center;
 `;
 
@@ -32,6 +33,7 @@ const BlogPost = styled.div`
   h3 {
     font-size: 1.5rem;
     color: #333;
+    margin: 10px;
   }
   p {
     font-size: 1rem;
