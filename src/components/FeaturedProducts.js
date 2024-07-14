@@ -5,7 +5,10 @@ const FeaturesSection = () => {
   return (
     <FeaturesContainer>
       <Feature>
-        <FeatureIcon src="/images/feature-icon1.png" alt="Freshness" />
+        <FeatureIcon
+          src="https://images.unsplash.com/photo-1531973968078-9bb02785f13d"
+          alt="Freshness"
+        />
         <h3>Always Fresh</h3>
         <p>
           Our flowers are sourced directly from farms to ensure the freshest
@@ -13,12 +16,18 @@ const FeaturesSection = () => {
         </p>
       </Feature>
       <Feature>
-        <FeatureIcon src="/images/feature-icon2.png" alt="Delivery" />
+        <FeatureIcon
+          src="https://images.unsplash.com/photo-1529257414770-1960d3ab77f8"
+          alt="Delivery"
+        />
         <h3>Fast Delivery</h3>
         <p>Enjoy fast and reliable delivery to your doorstep.</p>
       </Feature>
       <Feature>
-        <FeatureIcon src="/images/feature-icon3.png" alt="Support" />
+        <FeatureIcon
+          src="https://images.unsplash.com/photo-1599943209630-dc4ea3a1a3d5"
+          alt="Support"
+        />
         <h3>24/7 Support</h3>
         <p>
           Our customer support is available around the clock for any queries.
@@ -55,6 +64,7 @@ const Feature = styled.div`
 const FeatureIcon = styled.img`
   width: 80px;
   height: 80px;
+  border-radius: 10px;
 `;
 
 export default FeaturesSection;

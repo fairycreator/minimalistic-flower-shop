@@ -7,9 +7,18 @@ const HeroSection = () => {
   return (
     <HeroContainer>
       <Carousel autoPlay infiniteLoop showThumbs={false} showStatus={false}>
-        <HeroImage src="/images/copenhagen1.png" alt="Beautiful Flowers" />
-        <HeroImage src="/images/copenhagen2.png" alt="Fresh Bouquets" />
-        <HeroImage src="/images/copenhagen3.png" alt="Flower Arrangements" />
+        <HeroImage
+          src="https://images.unsplash.com/photo-1600051702654-9f9a6a58d924"
+          alt="Beautiful Flowers"
+        />
+        <HeroImage
+          src="https://images.unsplash.com/photo-1593642634367-d91a135587b5"
+          alt="Fresh Bouquets"
+        />
+        <HeroImage
+          src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0"
+          alt="Flower Arrangements"
+        />
       </Carousel>
     </HeroContainer>
   );
