@@ -1,68 +1,73 @@
 import React from "react";
 import styled from "styled-components";
 
-const CategoriesSection = () => {
-  const categories = [
-    {
-      name: "Birthday",
-      imageUrl: "https://source.unsplash.com/400x300/?birthday-flowers",
-    },
-    {
-      name: "Wedding",
-      imageUrl: "https://source.unsplash.com/400x300/?wedding-flowers",
-    },
-    {
-      name: "Sympathy",
-      imageUrl: "https://source.unsplash.com/400x300/?sympathy-flowers",
-    },
-  ];
+const categories = [
+  { id: 1, name: "Birthday", img: "https://via.placeholder.com/300" },
+  { id: 2, name: "Wedding", img: "https://via.placeholder.com/300" },
+  { id: 3, name: "Sympathy", img: "https://via.placeholder.com/300" },
+];
 
+const CategoriesSection = () => {
   return (
-    <SectionContainer>
-      <SectionTitle>Shop by Category</SectionTitle>
-      <CategoriesContainer>
+    <CategoriesContainer>
+      <SectionTitle>Shop by Categories</SectionTitle>
+      <CategoriesGrid>
         {categories.map((category) => (
-          <CategoryCard key={category.name}>
-            <CategoryImage src={category.imageUrl} alt={category.name} />
-            <CategoryName>{category.name}</CategoryName>
+          <CategoryCard key={category.id}>
+            <img src={category.img} alt={category.name} />
+            <h3>{category.name}</h3>
           </CategoryCard>
         ))}
-      </CategoriesContainer>
-    </SectionContainer>
+      </CategoriesGrid>
+    </CategoriesContainer>
   );
 };
 
-const SectionContainer = styled.section`
-  padding: 4rem 2rem;
+const CategoriesContainer = styled.div`
+  width: 80%;
+  margin: 2rem auto;
+  text-align: center;
 `;
 
 const SectionTitle = styled.h2`
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 `;
 
-const CategoriesContainer = styled.div`
+const CategoriesGrid = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-around;
   flex-wrap: wrap;
 `;
 
 const CategoryCard = styled.div`
   width: 300px;
+  margin: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  cursor: pointer;
-`;
+  transition: transform 0.3s, box-shadow 0.3s;
 
-const CategoryImage = styled.img`
-  width: 100%;
-  border-radius: 5px;
-`;
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
 
-const CategoryName = styled.h3`
-  font-size: 1.5rem;
-  margin-top: 1rem;
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    color: #333;
+  }
 `;
 
 export default CategoriesSection;
