@@ -4,75 +4,53 @@ import styled from "styled-components";
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubscribe = (e) => {
     e.preventDefault();
-    // Handle email subscription logic here
+    alert(`Subscribed with ${email}`);
     setEmail("");
   };
 
   return (
     <NewsletterContainer>
-      <h2>Stay Updated</h2>
-      <p>Subscribe to our newsletter for the latest updates and offers.</p>
-      <NewsletterForm onSubmit={handleSubmit}>
-        <EmailInput
+      <SectionTitle>Subscribe to Our Newsletter</SectionTitle>
+      <form onSubmit={handleSubscribe}>
+        <Input
           type="email"
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <SubscribeButton type="submit">Subscribe</SubscribeButton>
-      </NewsletterForm>
+        <Button type="submit">Subscribe</Button>
+      </form>
     </NewsletterContainer>
   );
 };
 
 const NewsletterContainer = styled.div`
+  width: 80%;
+  margin: 2rem auto;
   text-align: center;
-  padding: 4rem 2rem;
-  background-color: #f5f5f5;
-
-  h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 1rem;
-  }
-
-  p {
-    font-size: 1rem;
-    color: #777;
-    margin-bottom: 2rem;
-  }
+padding: 2rem;
+background: #f9f9f9;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
-const NewsletterForm = styled.form`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 600px;
-  margin: 0 auto;
-`;
+const SectionTitle = styled.h2font-size: 2rem; margin-bottom: 1.5rem; color: #333; text-transform: uppercase; letter-spacing: 1.5px;;
 
-const EmailInput = styled.input`
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px 0 0 4px;
-  flex: 1;
-  font-size: 1rem;
-`;
+const Input = styled.inputwidth: 300px; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px;;
 
-const SubscribeButton = styled.button`
-  padding: 0.75rem 2rem;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-  font-size: 1rem;
+const Button = styled.button`
+padding: 0.75rem 1.5rem;
+background: #333;
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
 
-  &:hover {
-    background-color: #555;
-  }
+&:hover {
+background: #555;
+}
 `;
 
 export default NewsletterSection;
