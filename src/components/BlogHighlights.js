@@ -1,22 +1,36 @@
 import React from "react";
 import styled from "styled-components";
 
+const blogPosts = [
+  {
+    id: 1,
+    title: "How to Choose the Perfect Bouquet",
+    excerpt: "Learn how to select the best flowers...",
+  },
+  {
+    id: 2,
+    title: "Flower Care Tips",
+    excerpt: "Keep your flowers fresh longer with these tips...",
+  },
+  {
+    id: 3,
+    title: "The Meaning of Different Flowers",
+    excerpt: "Discover the symbolism behind popular flowers...",
+  },
+];
+
 const BlogHighlights = () => {
   return (
     <BlogContainer>
-      <h2>From Our Blog</h2>
-      <BlogPost>
-        <h3>Latest Flower Trends</h3>
-        <p>Discover the latest trends in floral design and decoration.</p>
-      </BlogPost>
-      <BlogPost>
-        <h3>Flower Care Tips</h3>
-        <p>Learn how to keep your flowers fresh and beautiful for longer.</p>
-      </BlogPost>
-      <BlogPost>
-        <h3>Behind the Scenes</h3>
-        <p>Get a glimpse of how we create our stunning flower arrangements.</p>
-      </BlogPost>
+      <SectionTitle>From Our Blog</SectionTitle>
+      <BlogGrid>
+        {blogPosts.map((post) => (
+          <BlogCard key={post.id}>
+            <h3>{post.title}</h3>
+            <p>{post.excerpt}</p>
+          </BlogCard>
+        ))}
+      </BlogGrid>
     </BlogContainer>
   );
 };
@@ -24,19 +38,39 @@ const BlogHighlights = () => {
 const BlogContainer = styled.div`
   width: 80%;
   margin: 2rem auto;
-
   text-align: center;
 `;
 
-const BlogPost = styled.div`
-  margin: 1rem 0;
+const SectionTitle = styled.h2`
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+`;
+
+const BlogGrid = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+`;
+
+const BlogCard = styled.div`
+  width: 300px;
+  margin: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
   h3 {
     font-size: 1.5rem;
     color: #333;
-    margin: 10px;
   }
+
   p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #666;
   }
 `;
