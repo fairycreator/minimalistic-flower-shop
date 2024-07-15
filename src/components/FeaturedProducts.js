@@ -1,70 +1,94 @@
 import React from "react";
 import styled from "styled-components";
 
-const FeaturesSection = () => {
+const featuredProducts = [
+  {
+    id: 1,
+    name: "Roses",
+    price: 29.99,
+    img: "https://via.placeholder.com/300",
+  },
+  {
+    id: 2,
+    name: "Tulips",
+    price: 19.99,
+    img: "https://via.placeholder.com/300",
+  },
+  {
+    id: 3,
+    name: "Daisies",
+    price: 24.99,
+    img: "https://via.placeholder.com/300",
+  },
+];
+
+const FeaturedProducts = () => {
   return (
-    <FeaturesContainer>
-      <Feature>
-        <FeatureIcon
-          src="https://images.unsplash.com/photo-1531973968078-9bb02785f13d"
-          alt="Freshness"
-        />
-        <h3>Always Fresh</h3>
-        <p>
-          Our flowers are sourced directly from farms to ensure the freshest
-          blooms.
-        </p>
-      </Feature>
-      <Feature>
-        <FeatureIcon
-          src="https://images.unsplash.com/photo-1529257414770-1960d3ab77f8"
-          alt="Delivery"
-        />
-        <h3>Fast Delivery</h3>
-        <p>Enjoy fast and reliable delivery to your doorstep.</p>
-      </Feature>
-      <Feature>
-        <FeatureIcon
-          src="https://images.unsplash.com/photo-1599943209630-dc4ea3a1a3d5"
-          alt="Support"
-        />
-        <h3>24/7 Support</h3>
-        <p>
-          Our customer support is available around the clock for any queries.
-        </p>
-      </Feature>
-    </FeaturesContainer>
+    <ProductsContainer>
+      <SectionTitle>Featured Products</SectionTitle>
+      <ProductsGrid>
+        {featuredProducts.map((product) => (
+          <ProductCard key={product.id}>
+            <img src={product.img} alt={product.name} />
+            <h3>{product.name}</h3>
+            <p>${product.price.toFixed(2)}</p>
+          </ProductCard>
+        ))}
+      </ProductsGrid>
+    </ProductsContainer>
   );
 };
 
-const FeaturesContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  padding: 4rem 2rem;
-  background-color: #fff;
+const ProductsContainer = styled.div`
+  width: 80%;
+  margin: 2rem auto;
+  text-align: center;
 `;
 
-const Feature = styled.div`
+const SectionTitle = styled.h2`
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+`;
+
+const ProductsGrid = styled.div`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+`;
+
+const ProductCard = styled.div`
+  width: 300px;
+  margin: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  max-width: 300px;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
 
   h3 {
-    margin-top: 1rem;
     font-size: 1.5rem;
     color: #333;
   }
 
   p {
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    color: #777;
+    font-size: 1.2rem;
+    color: #666;
   }
 `;
 
-const FeatureIcon = styled.img`
-  width: 80px;
-  height: 80px;
-  border-radius: 10px;
-`;
-
-export default FeaturesSection;
+export default FeaturedProducts;
